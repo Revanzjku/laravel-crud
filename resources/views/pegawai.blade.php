@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Pegawai</title>
+    <style>
+        label {
+            display: block;
+        }
+        table {
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
     <a href="/pegawai/tambah">+Tambah Data Pegawai</a>
@@ -35,5 +43,11 @@
             @endforeach
         </tbody>
     </table>
+
+    <label>Halaman : {{$pegawai->currentPage()}}</label>
+    <label>Jumlah Data : {{$pegawai->total()}}</label>
+    <label>Data Per Halaman : {{$pegawai->perPage()}}</label>
+
+    {{$pegawai->links()}}
 </body>
 </html>
