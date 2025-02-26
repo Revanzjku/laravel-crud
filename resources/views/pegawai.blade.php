@@ -4,18 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Pegawai</title>
-    <style>
-        label {
-            display: block;
-        }
-        table {
-            margin-bottom: 10px;
-        }
-    </style>
+    <style type="text/css">
+		.pagination li{
+			float: left;
+			list-style-type: none;
+			margin:5px;
+		}
+	</style>
 </head>
 <body>
     <a href="/pegawai/tambah">+Tambah Data Pegawai</a>
-    @php($i = 1)
+    <p>Cari Data Pegawai : </p>
+    <form action="/pegawai/search" method="get">
+        <input type="search" name="search" placeholder="Cari Pegawai..." value="{{request('search')}}">
+        <button type="submit" value="search">Cari</button>
+    </form>
+    <br>
     <table border="1" cellspacing="0" cellpadding="10">
         <thead>
             <th>No. Urut</th>
@@ -28,7 +32,7 @@
         <tbody>
             @foreach($pegawai as $p)
                 <tr>
-                    <td>{{$i}}</td>
+                    <td>{{$pegawai->firstItem() + $loop->index}}</td>
                     <td>{{$p->pegawai_nama}}</td>
                     <td>{{$p->pegawai_jabatan}}</td>
                     <td>{{$p->pegawai_umur}}</td>
@@ -39,14 +43,9 @@
                         <a href="/pegawai/hapus/{{ $p->pegawai_id }}" onclick="return confirm('Yakin?')">Hapus</a>
                     </td>
                 </tr>
-                @php($i++)
             @endforeach
         </tbody>
     </table>
-
-    <label>Halaman : {{$pegawai->currentPage()}}</label>
-    <label>Jumlah Data : {{$pegawai->total()}}</label>
-    <label>Data Per Halaman : {{$pegawai->perPage()}}</label>
 
     {{$pegawai->links()}}
 </body>

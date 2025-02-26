@@ -8,8 +8,19 @@ class PegawaiController extends Controller
 {
     //
     public function pegawai() {
-        $pegawai = DB::table('pegawai')->paginate(10);
+        $pegawai = DB::table('pegawai')->orderBy('pegawai_umur')->paginate(10);
         return view('pegawai', compact('pegawai'));
+    }
+
+    public function search(Request $request) {
+        $search = $request->search;
+
+        $pegawai = DB::table('pegawai')
+        ->where('pegawai_nama', 'like', "%$search%")
+        ->paginate(10)
+        ->appends(['search' => $search]);
+
+        return view('pegawai', compact('pegawai', 'search'));
     }
 
     public function tambah() {

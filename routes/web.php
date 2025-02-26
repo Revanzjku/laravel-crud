@@ -8,6 +8,7 @@ Route::get('/', function () {
 });
 
 Route::get('/pegawai', [PegawaiController::class, 'pegawai']);
+Route::get('/pegawai/search', [PegawaiController::class, 'search']);
 Route::get('/pegawai/tambah', [PegawaiController::class, 'tambah']);
 Route::post('/pegawai/tambah/store', [PegawaiController::class, 'store']);
 Route::get('/pegawai/edit/{id}', [PegawaiController::class, 'edit']);
