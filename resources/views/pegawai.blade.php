@@ -8,6 +8,9 @@
 </head>
 <body class="p-6 bg-gray-100">
     <div class="container mx-auto">
+        @if (session('success'))
+            <p class="bg-green-500 text-white p-3 rounded mb-4">{{ session('success') }}</p>
+        @endif
         <a href="/pegawai/tambah" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 transition">+Tambah Data Pegawai</a>
         <div class="mt-4 mb-4">
             <p class="text-lg font-semibold">Cari Data Pegawai : </p>

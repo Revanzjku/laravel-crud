@@ -17,18 +17,30 @@
             <div>
                 <label for="nama" class="block font-medium">Masukkan Nama : </label>
                 <input type="text" name="nama" id="nama" required class="w-full mt-1 p-2 border border-gray-300 rounded focus:ring focus:ring-blue-300">
+                @error('nama')
+                    <p class="text-red-500 text-sm mt-1">{{$message}}</p>
+                @enderror
             </div>
             <div>
                 <label for="jabatan" class="block font-medium">Masukkan Jabatan : </label>
                 <input type="text" name="jabatan" id="jabatan" required class="w-full mt-1 p-2 border border-gray-300 rounded focus:ring focus:ring-blue-300">
+                @error('jabatan')
+                    <p class="text-red-500 text-sm mt-1">{{$message}}</p>
+                @enderror
             </div>
             <div>
                 <label for="umur" class="block font-medium">Umur : </label>
                 <input type="number" name="umur" id="umur" required class="w-full mt-1 p-2 border border-gray-300 rounded focus:ring focus:ring-blue-300">
+                @error('umur')
+                    <p class="text-red-500 text-sm mt-1">{{$message}}</p>
+                @enderror
             </div>
             <div>
                 <label for="alamat" class="block font-medium">Masukkan Alamat : </label>
                 <textarea name="alamat" id="alamat" required class="w-full mt-1 p-2 border border-gray-300 rounded focus:ring focus:ring-blue-300"></textarea>
+                @error('alamat')
+                    <p class="text-red-500 text-sm mt-1">{{$message}}</p>
+                @enderror
             </div>
             <button type="submit" class="w-full bg-blue-500 text-white p-3 rounded hover:bg-blue-700 transition">Simpan Data</button>
         </form>

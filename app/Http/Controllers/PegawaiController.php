@@ -28,6 +28,13 @@ class PegawaiController extends Controller
     }
 
     public function store(Request $request) {
+        $request->validate([
+            'nama' => 'required|min:3',
+            'jabatan' => 'required',
+            'umur' => 'required|numeric|min:17',
+            'alamat' => 'required'
+        ]);
+
         DB::table('pegawai')->insert([
             'pegawai_nama'=>$request->nama,
             'pegawai_jabatan'=>$request->jabatan,
@@ -35,7 +42,7 @@ class PegawaiController extends Controller
             'pegawai_alamat'=>$request->alamat
         ]);
 
-        return redirect('/pegawai');
+        return redirect('/pegawai')->with('success', 'Data Pegawai Berhasil Ditambahkan!');
     }
 
     public function edit($id) {
