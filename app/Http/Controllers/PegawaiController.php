@@ -33,6 +33,14 @@ class PegawaiController extends Controller
             'jabatan' => 'required',
             'umur' => 'required|numeric|min:17',
             'alamat' => 'required'
+        ], [
+            'nama.required' => 'Nama tidak boleh kosong!',
+            'nama.min' => 'Nama minimal 3 huruf!',
+            'jabatan.required' => 'Posisi jabatan tidak boleh kosong!',
+            'umur.required' => 'Umur tidak boleh kosong!',
+            'umur.numeric' => 'Umur harus berupa angka!',
+            'umur.min' => 'Belum cukup umur!',
+            'alamat.required' => 'Alamat tidak boleh kosong!'
         ]);
 
         DB::table('pegawai')->insert([
@@ -52,6 +60,21 @@ class PegawaiController extends Controller
     }
 
     public function update(Request $request) {
+        $request->validate([
+            'nama' => 'required|min:3',
+            'jabatan' => 'required',
+            'umur' => 'required|numeric|min:17',
+            'alamat' => 'required'
+        ], [
+            'nama.required' => 'Nama tidak boleh kosong!',
+            'nama.min' => 'Nama minimal 3 huruf!',
+            'jabatan.required' => 'Posisi jabatan tidak boleh kosong!',
+            'umur.required' => 'Umur tidak boleh kosong!',
+            'umur.numeric' => 'Umur harus berupa angka!',
+            'umur.min' => 'Belum cukup umur!',
+            'alamat.required' => 'Alamat tidak boleh kosong!'
+        ]);
+
         DB::table('pegawai')->where('pegawai_id', $request->id)->update([
             'pegawai_nama'=>$request->nama,
             'pegawai_jabatan'=>$request->jabatan,
@@ -59,7 +82,7 @@ class PegawaiController extends Controller
             'pegawai_alamat'=>$request->alamat
         ]);
 
-        return redirect('/pegawai');
+        return redirect('/pegawai')->with('success', 'Data Pegawai Berhasil Diperbarui');
     }
 
     public function hapus($id) {
