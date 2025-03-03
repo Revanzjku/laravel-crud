@@ -19,3 +19,6 @@ Route::get('/pegawai/hapus/{id}', [PegawaiController::class, 'hapus']);
 
 // CRUD data Mahasiswa dengan ORM
 Route::get('/mahasiswa', [MahasiswaController::class, 'mahasiswa']);
+Route::get('/mahasiswa/search', [MahasiswaController::class, 'search']);
+Route::get('/mahasiswa/tambah', [MahasiswaController::class, 'tambah']);
+Route::post('/mahasiswa/tambah/store', [MahasiswaController::class, 'store']);
