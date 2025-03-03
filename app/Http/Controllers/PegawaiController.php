@@ -9,7 +9,7 @@ class PegawaiController extends Controller
     //
     public function pegawai() {
         $pegawai = DB::table('pegawai')->orderBy('pegawai_umur')->paginate(10);
-        return view('pegawai', compact('pegawai'));
+        return view('query_builder.pegawai', compact('pegawai'));
     }
 
     public function search(Request $request) {
@@ -20,11 +20,11 @@ class PegawaiController extends Controller
         ->paginate(10)
         ->appends(['search' => $search]);
 
-        return view('pegawai', compact('pegawai', 'search'));
+        return view('query_builder.pegawai', compact('pegawai', 'search'));
     }
 
     public function tambah() {
-        return view('tambah');
+        return view('query_builder.tambah');
     }
 
     public function store(Request $request) {
@@ -56,7 +56,7 @@ class PegawaiController extends Controller
     public function edit($id) {
         $pegawai = DB::table('pegawai')->where('pegawai_id', $id)->get();
 
-        return view('edit', compact('pegawai'));
+        return view('query_builder.edit', compact('pegawai'));
     }
 
     public function update(Request $request) {
