@@ -36,12 +36,32 @@ class MahasiswaController extends Controller
             'alamat' => 'required'
         ]);
 
-        Mahasiswa::create([
-            'nama' => $request->nama,
-            'nim' => $request->nim,
-            'alamat' => $request->alamat
+        Mahasiswa::create($request->all());
+
+        return redirect('/mahasiswa')->with('success', 'Data Mahasiswa berhasil ditambahkan!');
+    }
+
+    public function edit($id) {
+        $mahasiswa = Mahasiswa::findOrFail($id);
+        return view('orm.edit', compact('mahasiswa'));
+    }
+
+    public function update(Request $request, $id) {
+        $request->validate([
+            'nama' => 'required|min:3',
+            'nim' => 'required|numeric',
+            'alamat' => 'required'
         ]);
 
-        return redirect('/mahasiswa')->with('success', 'Data Mahasiswa Berhasil Ditambahkan!');
+        $mahasiswa = Mahasiswa::findOrFail($id);
+        $mahasiswa->update($request->all());
+
+        return redirect('/mahasiswa')->with('success', 'Data berhasil diperbarui');
+    }
+
+    public function hapus($id) {
+        Mahasiswa::findOrFail($id)->delete();
+        
+        return redirect('/mahasiswa',)->with('success', 'Data berhasil dihapus');
     }
 }

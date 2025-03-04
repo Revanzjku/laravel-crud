@@ -13,9 +13,9 @@
         @endif
         <a href="/mahasiswa/tambah" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 transition">+Tambah Data Mahasiswa</a>
         <div class="mt-4 mb-4">
-            <p class="text-lg font-semibold">Cari Data Pegawai : </p>
+            <p class="text-lg font-semibold">Cari Data Mahasiswa : </p>
             <form action="/mahasiswa/search" method="get" class="flex space-x-2">
-                <input type="search" name="search" placeholder="Cari Pegawai..." value="{{request('search')}}" class="border border-gray-300 px-4 py-2 rounded focus:outline-none focus:ring focus:ring-blue-300">
+                <input type="search" name="search" placeholder="Cari Mahasiswa..." value="{{request('search')}}" class="border border-gray-300 px-4 py-2 rounded focus:outline-none focus:ring focus:ring-blue-300">
                 <button type="submit" value="search" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-700 transition">Cari</button>
             </form>
         </div>

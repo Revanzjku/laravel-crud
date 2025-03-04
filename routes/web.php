@@ -22,3 +22,6 @@ Route::get('/mahasiswa', [MahasiswaController::class, 'mahasiswa']);
 Route::get('/mahasiswa/search', [MahasiswaController::class, 'search']);
 Route::get('/mahasiswa/tambah', [MahasiswaController::class, 'tambah']);
 Route::post('/mahasiswa/tambah/store', [MahasiswaController::class, 'store']);
+Route::get('/mahasiswa/edit/{id}', [MahasiswaController::class, 'edit']);
+Route::put('/mahasiswa/update/{id}', [MahasiswaController::class, 'update']);
+Route::get('/mahasiswa/hapus/{id}', [MahasiswaController::class, 'hapus']);
